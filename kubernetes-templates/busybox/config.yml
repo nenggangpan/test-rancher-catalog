@@ -1,7 +1,7 @@
 name: # Busybox 
 description: |
   # Description of the Catalog Entry
-version: 1
+version: v0.1.0 
 category: # Category to be used for searching catalog entries
 maintainer: Nenggang Pan
 license: Apache 2.0 
