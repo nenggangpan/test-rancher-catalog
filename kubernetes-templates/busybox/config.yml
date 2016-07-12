@@ -1,8 +1,8 @@
-name: # Busybox 
-description: |
-  # Description of the Catalog Entry
-version: v0.1.0 
-category: # Category to be used for searching catalog entries
+name:  Busybox 
+description: busybox
+version: v0.1.0
+category: sentience-tools
 maintainer: Nenggang Pan
 license: Apache 2.0 
-projectURL: https://github.com/nenggangpan/test-rancher-catalog.git
+projectURL: 
+#projectURL: https://github.com/nenggangpan/test-rancher-catalog.git

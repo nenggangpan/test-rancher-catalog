@@ -1,8 +1,8 @@
 .catalog:
   name: "Busybox"
-  version: 1
+  version: v0.1.0
   description: "busybox tool"
-  minimum_rancher_version: 1
+  minimum_rancher_version: v0.1.0
   questions:
     - variable: client_port
       description: "Port to access the blog"
