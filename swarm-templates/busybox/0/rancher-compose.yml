@@ -1,5 +1,3 @@
-busybox:
-  scale: 2
 .catalog:
   name: "Busybox"
   version: v0.1.0
