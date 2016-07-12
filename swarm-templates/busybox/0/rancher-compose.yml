@@ -1,0 +1,12 @@
+.catalog:
+  name: "Busybox"
+  version: 1
+  description: "busybox tool"
+  minimum_rancher_version: 1
+  questions:
+    - variable: client_port
+      description: "Port to access the blog"
+      label: "Client Port"
+      required: true
+      default: "80"
+      type: "int"
