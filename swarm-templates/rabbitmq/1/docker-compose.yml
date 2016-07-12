@@ -1,0 +1,30 @@
+version: "2"
+
+services:
+    rabbitserver:
+        image: my_rabbitmq:3.5.4
+        hostname: rabbitserver
+        command: rabbit-server
+        networks:
+            - cluster_net
+        ports:
+            - "5672:5672"
+            - "15672:15672"
+            - "4369"
+            - "25672"
+
+    rabbitnode:
+        image: my_rabbitmq:3.5.4
+        environment:
+            - CLUSTER_WITH=rabbitserver
+        command: rabbit-node
+        networks:
+            - cluster_net
+        ports:
+            - "5672"
+        depends_on:
+            - rabbitserver
+
+networks:
+  cluster_net:
+    driver: overlay
