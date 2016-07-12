@@ -1,6 +1,0 @@
-busybox:
-  image: busybox
-  command: sleep 6000
-  volumes:
-    - ./test:/mnt/test/
-  

@@ -1,6 +1,6 @@
 busybox:
   image: busybox
   command: sleep 6000
-  volumes:
-    - /home/ngpan/test-rancher-catalog/swarm-templates/busybox/0/test:/mnt/test/
+#  volumes:
+#    - /home/ngpan/test-rancher-catalog/swarm-templates/busybox/0/test:/mnt/test/
   
