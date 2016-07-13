@@ -1,17 +1,23 @@
-rabbitserver:
-  image: my_rabbitmq:3.5.4
-  command: rabbit-server
-  ports:
-    - $listen_port:5672
-    - $management_port:15672
-    - $clustering_port_1
-    - $clustering_port_2
-rabbitnode:
-  image: my_rabbitmq:3.5.4
-  command: rabbit-node
-  ports:
-    - $listen_port:5672
-    - $management_port:15672
-    - $clustering_port_1
-    - $clustering_port_2
-  
+$rabbit_master:
+        image: my_rabbitmq:3.5.4
+        hostname: $rabbit_master
+        command: rabbit-server
+        ports:
+            - "$listen_port"
+            - "$management_port"
+            - "$clustering_port_1"
+            - "$clustering_port_2"
+        labels:
+            - "io.rancher.container.network=true"
+
+$rabbit_slave:
+        image: my_rabbitmq:3.5.4
+        hostname: $rabbit_slave
+        environment:
+            - CLUSTER_WITH=$rabbit_master
+        command: rabbit-node
+        ports:
+            - "$listen_port"
+            - "$management_port"
+        labels:
+            - "io.rancher.container.network=true"
