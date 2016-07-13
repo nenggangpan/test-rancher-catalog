@@ -1,6 +1,6 @@
-$rabbit_master:
+rabbitmaster:
         image: my_rabbitmq:3.5.4
-        hostname: $rabbit_master
+        hostname: rabbitmaster
         command: rabbit-server
         ports:
             - "$listen_port"
@@ -10,11 +10,11 @@ $rabbit_master:
         labels:
             - "io.rancher.container.network=true"
 
-$rabbit_slave:
+rabbitslave1:
         image: my_rabbitmq:3.5.4
-        hostname: $rabbit_slave
+        #hostname: $rabbit_slave
         environment:
-            - CLUSTER_WITH=$rabbit_master
+            - CLUSTER_WITH=rabbitmaster
         command: rabbit-node
         ports:
             - "$listen_port"
