@@ -1,0 +1,30 @@
+.catalog:
+  name: "Rabbit MQ"
+  version: v0.1.1
+  description: "sentience message queue component"
+  minimum_rancher_version: v0.1.0
+  questions:
+    - variable: listen_port
+      description: "Port to access the message"
+      label: "listen_port"
+      required: true
+      default: "5672"
+      type: "int"
+    - variable: management_port
+      description: "Port to access the management GUI"
+      label: "management_port"
+      required: true
+      default: "15672"
+      type: "int"
+    - variable: clustering_port_1
+      description: "Port for clustering"
+      label: "clustering_port_1"
+      required: true
+      default: "25672"
+      type: "int"
+    - variable: clustering_port_2
+      description: "Port for clustering"
+      label: "clustering_port_2"
+      required: true
+      default: "4369"
+      type: "int"
