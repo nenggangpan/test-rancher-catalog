@@ -10,9 +10,8 @@ rabbitmaster:
         labels:
             - "io.rancher.container.network=true"
 
-rabbitslave1:
+rabbitslave:
         image: my_rabbitmq:3.5.4
-        #hostname: $rabbit_slave
         environment:
             - CLUSTER_WITH=rabbitmaster
         command: rabbit-node
@@ -21,3 +20,13 @@ rabbitslave1:
             - "$management_port"
         labels:
             - "io.rancher.container.network=true"
+            - "io.rancher.container.hostname_override=container_name"
+
+lb:
+  image: rancher/load-balancer-service
+  ports:
+  - "$listen_port:$listen_port"
+  - "$management_port:$management_port"
+  links: 
+  - rabbitmaster:rabbitmaster
+  - rabbitslave:rabbitslave

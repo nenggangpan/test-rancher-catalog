@@ -28,15 +28,17 @@
       required: true
       default: "4369"
       type: "int"
-    - variable: rabbit_master
-      description: "rabbitmq master node name"
-      label: "rabbit_master"
-      required: true
-      default: "rabbitserver"
-      type: "string"
-    - variable: rabbit_slave
-      description: "rabbitmq slave node name"
-      label: "rabbit_slave"
-      required: true
-      default: "rabbitslave"
-      type: "string"
+rabbitslave1:
+  scale: 2
+rabbitmaster:
+  scale: 1
+lb:
+  scale: 1
+  load_balancer_config:
+    name: lb config
+  health_check:
+    port: 42
+    interval: 2000
+    unhealthy_threshold: 3
+    healthy_threshold: 2
+    response_timeout: 2000
