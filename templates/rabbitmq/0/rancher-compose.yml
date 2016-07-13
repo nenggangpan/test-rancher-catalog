@@ -28,7 +28,7 @@
       required: true
       default: "4369"
       type: "int"
-rabbitslave1:
+rabbitslave:
   scale: 2
 rabbitmaster:
   scale: 1
