@@ -25,8 +25,8 @@ rabbitslave:
 lb:
   image: rancher/load-balancer-service
   ports:
-  - "$listen_port:$listen_port"
-  - "$management_port:$management_port"
+  - "$exposed_listen_port:$listen_port"
+  - "$exposed_management_port:$management_port"
   links: 
   - rabbitmaster:rabbitmaster
   - rabbitslave:rabbitslave
