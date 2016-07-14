@@ -1,0 +1,34 @@
+rabbitmaster:
+        image: my_rabbitmq:3.5.4
+        hostname: rabbitmaster
+        command: rabbit-server
+#        ports:
+#            - "$listen_port"
+#            - "$management_port"
+#            - "$clustering_port_1"
+#            - "$clustering_port_2"
+        labels:
+            - "io.rancher.container.network=true"
+
+rabbitslave:
+        image: my_rabbitmq:3.5.4
+        environment:
+            - CLUSTER_WITH=rabbitmaster
+        command: rabbit-node
+#        ports:
+#            - "$listen_port"
+#            - "$management_port"
+        labels:
+            - "io.rancher.container.network=true"
+            - "io.rancher.container.hostname_override=container_name"
+        links:
+        - rabbitmaster:rabbitmaster
+
+lb:
+  image: rancher/load-balancer-service
+  ports:
+  - "$exposed_listen_port:$listen_port"
+  - "$exposed_management_port:$management_port"
+  links: 
+  - rabbitmaster:rabbitmaster
+  - rabbitslave:rabbitslave
