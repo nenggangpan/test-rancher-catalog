@@ -1,0 +1,128 @@
+PSQLMaster:
+#  restart: always
+  image: sameersbn/postgresql:9.4-24
+  hostname: PSQLMaster
+#  user: postgresql
+  labels:
+    - "io.rancher.container.network=true"
+#  ports:
+#    - "5432:5432"
+    #- "5432"
+  expose:
+    - "5432"
+  environment:
+    - DEBUG=false
+
+    - DB_USER=dbuser
+    - DB_PASS=dbpass
+    - DB_NAME=dbname
+    - DB_TEMPLATE=
+
+    - DB_EXTENSION=
+
+    - REPLICATION_MODE=
+    - REPLICATION_USER=replicationuser
+    - REPLICATION_PASS=replicationpass
+    - REPLICATION_SSLMODE=
+  volumes:
+    - /srv/docker/postgresqlmaster:/var/lib/postgresql
+
+PSQLSlave:
+#  restart: always
+  image: sameersbn/postgresql:9.4-24
+#  user: postgresql
+  labels:
+    - "io.rancher.container.network=true"
+    - "io.rancher.container.hostname_override=container_name"
+  expose:
+    - "5432"
+  environment:
+    - DEBUG=false
+
+    - DB_USER=
+    - DB_PASS=
+    - DB_NAME=
+    - DB_TEMPLATE=
+
+    - DB_EXTENSION=
+
+    - REPLICATION_MODE=slave
+    - REPLICATION_USER=replicationuser
+    - REPLICATION_PASS=replicationpass
+    - REPLICATION_SSLMODE=prefer
+    - REPLICATION_HOST=PSQLMaster
+    - REPLICATION_PORT=5432
+  links:
+    - PSQLMaster:PSQLMaster
+  volumes:
+    - /srv/docker/postgresqlslave:/var/lib/postgresql
+
+PSQLSnapshot:
+#  restart: always
+  image: sameersbn/postgresql:9.4-24
+  labels:
+    - "io.rancher.container.network=true"
+    - "io.rancher.container.hostname_override=container_name"
+  environment:
+    - DEBUG=false
+
+    - DB_USER=
+    - DB_PASS=
+    - DB_NAME=
+    - DB_TEMPLATE=
+
+    - DB_EXTENSION=
+
+    - REPLICATION_MODE=snapshot
+    - REPLICATION_USER=replicationuser
+    - REPLICATION_PASS=replicationpass
+    - REPLICATION_SSLMODE=prefer
+    - REPLICATION_HOST=PSQLMaster
+    - REPLICATION_PORT=5432
+  links:
+    - PSQLMaster:PSQLMaster
+  volumes:
+    - /srv/docker/postgresqlsnapshot:/var/lib/postgresql
+
+PSQLBackup:
+#  restart: always
+  image: sameersbn/postgresql:9.4-24
+  labels:
+    - "io.rancher.container.network=true"
+    - "io.rancher.container.hostname_override=container_name"
+  environment:
+    - DEBUG=false
+
+    - DB_USER=
+    - DB_PASS=
+    - DB_NAME=
+    - DB_TEMPLATE=
+
+    - DB_EXTENSION=
+
+    - REPLICATION_MODE=backup
+    - REPLICATION_USER=replicationuser
+    - REPLICATION_PASS=replicationpass
+    - REPLICATION_SSLMODE=
+    #- REPLICATION_SSLMODE=prefer
+    - REPLICATION_HOST=PSQLMaster
+    - REPLICATION_PORT=5432
+  links:
+    - PSQLMaster:PSQLMaster
+  volumes:
+    #- /srv/docker/backups/postgresql.$(date +%Y%m%d%H%M%S):/var/lib/postgresql
+    - /srv/docker/backups/postgresqlbackup:/var/lib/postgresql
+
+PSQLMasterlb:
+  image: rancher/load-balancer-service
+  ports:
+    - "$exposed_master_port:5432"
+  links: 
+    - PSQLMaster:PSQLMaster
+
+PSQLSlavelb:
+  image: rancher/load-balancer-service
+  ports:
+    - "$exposed_slave_port:5432"
+  links:
+    - PSQLSlave:PSQLSlave
