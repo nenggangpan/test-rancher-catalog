@@ -6,13 +6,13 @@
   questions:
     - variable: exposed_master_port
       description: "Port to access postgresql master node"
-      label: "listen_port"
+      label: "exposed_master_port"
       required: true
       default: "5432"
       type: "int"
     - variable: exposed_slave_port
       description: "Port to access postgresql slave nodes"
-      label: "management_port"
+      label: "exposed_slave_port"
       required: true
       default: "15432"
       type: "int"
