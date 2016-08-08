@@ -1,0 +1,13 @@
+openam:
+  build: /home/sentience/rancher-openam/sample
+#  image: openam-try
+  ports:
+  - "9080:8080"
+#  environment:
+#  - HOSTNAME=40.121.80.15.xip.io
+#  - SERVER_URL=http://40.121.80.15.xip.io:8080
+#  - CK_DOMAIN=.xip.io
+#  - ADMIN_PWD=password 
+#  volumes:
+#  - /home/sentience/rancher-openam/sample/config:/var/tmp/config
+  command: /usr/local/tomcat/bin/catalina.sh run
