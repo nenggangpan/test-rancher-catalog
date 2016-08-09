@@ -1,0 +1,11 @@
+openam:
+  image: forgerock/openam
+  hostname: openam
+  labels:
+  - "io.rancher.container.network=true"  
+  ports:
+  - "$exposed_openam_gui_port:8080"
+  volumes:
+  - /home/sentience/rancher-openam/sample/am-secrets:/var/secrets/openam
+  - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
+  - /home/sentience/rancher-openam/sample/config-embedded:/var/tmp/config

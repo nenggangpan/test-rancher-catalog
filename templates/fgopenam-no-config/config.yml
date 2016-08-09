@@ -1,5 +1,5 @@
-name:  Forgerock openam 
-description: Forgerock openam with embeded opendj, login with amadmin/password for a try.
+name:  Forgerock openam with no pre-configuration. 
+description: Forgerock openam with no pre-configuration, and the default configure in the first page is not usable. please use the customer configure.
 version: v0.1.0
 category: sentience identity server
 maintainer: Nenggang Pan
