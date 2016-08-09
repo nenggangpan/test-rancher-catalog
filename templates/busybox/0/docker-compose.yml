@@ -2,5 +2,5 @@ busybox:
   image: busybox
   command: sleep 6000
   volumes:
-    - $PWD/test:/mnt/test/
+    - $PWD:/mnt
   
