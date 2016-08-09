@@ -3,16 +3,10 @@
   version: v0.1.0
   description: "sentience identity component"
   minimum_rancher_version: v0.1.0
-#  questions:
-#    - variable: exposed_master_port
-#      description: "Port to access postgresql master node"
-#      label: "exposed_master_port"
-#      required: true
-#      default: "5432"
-#      type: "int"
-#    - variable: exposed_slave_port
-#      description: "Port to access postgresql slave nodes"
-#      label: "exposed_slave_port"
-#      required: true
-#      default: "15432"
-#      type: "int"
+  questions:
+    - variable: exposed_openam_gui_port
+      description: "Port used to login openam"
+      label: "exposed_openam_gui_port"
+      required: true
+      default: "8080"
+      type: "int"
