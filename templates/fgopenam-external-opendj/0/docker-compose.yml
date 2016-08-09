@@ -1,0 +1,25 @@
+opendj:
+  image: forgerock/opendj:latest
+  ports:
+  - "$exposed_opendj_port1:389"
+  - "$exposed_opendj_port2:4444"
+  hostname: opendj
+  environment:
+    BASE_DN: dc=openam,dc=forgerock,dc=org
+  volumes:
+  # uncomment to create a persistent directory
+  #    - /tmp/opendj:/opt/opendj/data
+  # This mounts a secret volume for the dir manager password and for DJ key/trust stores
+  - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
+
+openam:
+  image: forgerock/openam:latest
+  ports:
+  - "$exposed_openam_gui_port:8080"
+  hostname: openam
+  environment:
+    DIR_MANAGER_PW_FILE: /var/secrets/opendj/dirmanager.pw
+  volumes:
+  - /home/sentience/rancher-openam/sample/am-secrets:/var/secrets/openam
+  - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
+  - /home/sentience/rancher-openam/sample/config-ext:/var/tmp/config

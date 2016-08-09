@@ -1,0 +1,25 @@
+.catalog:
+  name: "Forgerock openam with external opendj"
+  version: v0.1.0
+  description: "sentience identity component with together with an external opendj"
+  minimum_rancher_version: v0.1.0
+  questions:
+    - variable: exposed_openam_gui_port
+      description: "Port used to login openam"
+      label: "exposed_openam_gui_port"
+      required: true
+      default: "8080"
+      type: "int"
+    - variable: exposed_opendj_port1
+      description: "Port 1 for opendj"
+      label: "exposed_opendj_port1"
+      required: true
+      default: "389"
+      type: "int"
+    - variable: exposed_opendj_port2
+      description: "Port 2 for opendj"
+      label: "exposed_opendj_port2"
+      required: true
+      default: "4444"
+      type: "int"
+

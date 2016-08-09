@@ -1,0 +1,8 @@
+name:  Forgerock openam with external opendj. 
+description: Forgerock openam with external opendj, login with amadmin/password for a try.
+version: v0.1.0
+category: sentience identity server
+maintainer: Nenggang Pan
+license: Apache 2.0 
+projectURL: 
+#projectURL: https://github.com/nenggangpan/test-rancher-catalog.git
