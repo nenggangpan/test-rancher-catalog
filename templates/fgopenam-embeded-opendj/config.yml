@@ -1,4 +1,4 @@
-name:  Forgerock openam with embeded opendj. 
+name:  FR openam+embeded-opendj 
 description: Forgerock openam with embeded opendj, login with amadmin/password for a try.
 version: v0.1.0
 category: sentience identity server

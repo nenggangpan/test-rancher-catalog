@@ -1,4 +1,4 @@
-name:  Forgerock openam with no pre-configuration. 
+name:  FR openam 
 description: Forgerock openam with no pre-configuration, and the default configure in the first page is not usable. please use the customer configure.
 version: v0.1.0
 category: sentience identity server
