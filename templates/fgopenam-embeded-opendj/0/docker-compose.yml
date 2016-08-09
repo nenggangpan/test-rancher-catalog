@@ -1,8 +1,8 @@
 openam:
   image: forgerock/openam
   hostname: openam
-  labels:
-  - "io.rancher.container.network=true"  
+#  labels:
+#  - "io.rancher.container.network=true"  
   ports:
   - "$exposed_openam_gui_port:8080"
   volumes:
