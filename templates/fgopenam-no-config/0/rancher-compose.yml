@@ -1,7 +1,7 @@
 .catalog:
-  name: "Forgerock openam"
+  name: "Forgerock openam with no pre-configuration"
   version: v0.1.0
-  description: "sentience identity component"
+  description: "sentience identity component with no pre-configuration, the default configuration in the first page is not usable"
   minimum_rancher_version: v0.1.0
   questions:
     - variable: exposed_openam_gui_port
