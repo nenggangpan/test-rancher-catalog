@@ -1,0 +1,13 @@
+.catalog:
+  name: "Forgerock opendj"
+  version: v0.1.0
+  description: "sentience identity component opendj"
+  minimum_rancher_version: v0.1.0
+  questions:
+    - variable: exposed_opendj_port
+      description: "Port exposed for opendj"
+      label: "exposed_opendj_port"
+      required: true
+      default: "389"
+      type: "int"
+
