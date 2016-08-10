@@ -6,6 +6,8 @@ opendj:
   hostname: opendj
   environment:
     BASE_DN: dc=openam,dc=forgerock,dc=org
+    # Default password for config store
+    DIR_MANAGER_PWD: $DIR_MANAGER_PWD
   volumes:
   # uncomment to create a persistent directory
   #    - /tmp/opendj:/opt/opendj/data
@@ -19,6 +21,12 @@ openam:
   hostname: openam
   environment:
     DIR_MANAGER_PW_FILE: /var/secrets/opendj/dirmanager.pw
+    FQDN_HOSTNAME: $HOSTNAME_SHORT$CK_DOMAIN
+    SERVER_URL: http://$HOSTNAME_SHORT$CK_DOMAIN:8080
+    CK_DOMAIN: $CK_DOMAIN
+    ADMIN_PWD: $ADMIN_PWD
+    # Default password for config store
+    DIR_MANAGER_PWD: $DIR_MANAGER_PWD
   volumes:
   - /home/sentience/rancher-openam/sample/am-secrets:/var/secrets/openam
   - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj

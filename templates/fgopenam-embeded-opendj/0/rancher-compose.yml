@@ -10,3 +10,21 @@
       required: true
       default: "8080"
       type: "int"
+    - variable: HOSTNAME_SHORT
+      description: "hostname for short of the web host"
+      label: "HOSTNAME_SHORT"
+      required: true
+      default: "openam"
+      type: "string"
+    - variable: CK_DOMAIN
+      description: "cookie domain of openam server"
+      label: "CK_DOMAIN"
+      required: true
+      default: ".cookie.domain"
+      type: "string"
+    - variable: ADMIN_PWD
+      description: "password for admin account amadmin"
+      label: "ADMIN_PWD"
+      required: true
+      default: "password"
+      type: "string"

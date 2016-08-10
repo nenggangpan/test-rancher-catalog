@@ -22,4 +22,27 @@
       required: true
       default: "4444"
       type: "int"
-
+    - variable: HOSTNAME_SHORT
+      description: "short hostname of openam server"
+      label: "HOSTNAME_SHORT"
+      required: true
+      default: "openam"
+      type: "string"
+    - variable: CK_DOMAIN
+      description: "cookie domain of openam server"
+      label: "CK_DOMAIN"
+      required: true
+      default: ".cookie.domain"
+      type: "string"
+    - variable: ADMIN_PWD
+      description: "password of openam server account amadmin"
+      label: "ADMIN_PWD"
+      required: true
+      default: "password"
+      type: "string"
+    - variable: DIR_MANAGER_PWD
+      description: "Default password for openam config store"
+      label: "DIR_MANAGER_PWD"
+      required: true
+      default: "passwordcs"
+      type: "string"

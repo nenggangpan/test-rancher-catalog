@@ -3,6 +3,12 @@ openam:
   hostname: openam
 #  labels:
 #  - "io.rancher.container.network=true"  
+  environment:
+  - CK_DOMAIN=$CK_DOMAIN
+  - HOSTNAME=$HOSTNAME_SHORT$CK_DOMAIN
+  - FQDN_HOSTNAME=$HOSTNAME_SHORT$CK_DOMAIN
+  - SERVER_URL=http://$HOSTNAME_SHORT$CK_DOMAIN:8080
+  - ADMIN_PWD=$ADMIN_PWD
   ports:
   - "$exposed_openam_gui_port:8080"
   volumes:
