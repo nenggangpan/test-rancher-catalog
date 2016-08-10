@@ -1,5 +1,5 @@
 openam:
-  image: forgerock/openam
+  image: forgerock/openam:$IMAGE_TAG
   hostname: openam
 #  labels:
 #  - "io.rancher.container.network=true"  

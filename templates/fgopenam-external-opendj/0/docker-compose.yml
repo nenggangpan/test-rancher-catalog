@@ -15,7 +15,7 @@ opendj:
   - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
 
 openam:
-  image: forgerock/openam:latest
+  image: forgerock/openam:$IMAGE_TAG
   ports:
   - "$exposed_openam_gui_port:8080"
   hostname: openam

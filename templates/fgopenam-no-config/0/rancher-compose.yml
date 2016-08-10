@@ -10,3 +10,9 @@
       required: true
       default: "8080"
       type: "int"
+    - variable: IMAGE_TAG
+      description: "openam image tag"
+      label: "IMAGE_TAG"
+      required: true
+      default: "latest"
+      type: "string"

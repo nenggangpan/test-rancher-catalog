@@ -46,3 +46,9 @@
       required: true
       default: "passwordcs"
       type: "string"
+    - variable: IMAGE_TAG
+      description: "openam image tag"
+      label: "IMAGE_TAG"
+      required: true
+      default: "latest"
+      type: "string"
