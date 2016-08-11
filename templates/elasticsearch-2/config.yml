@@ -1,0 +1,5 @@
+name: Elasticsearch 2.x
+description: |
+  Cloned from community catalog. Elasticsearch, you know for search!
+version: 2.2.2-rancher1
+category: ELK
