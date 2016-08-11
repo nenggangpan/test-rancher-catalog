@@ -146,6 +146,10 @@ whisper:
   volumes:
     - /tmp/whispera:/opt/graphite/storage/whispera
     - /tmp/whisperb:/opt/graphite/storage/whisperb
+  labels:
+    io.rancher.container.hostname_override: container_name
+    io.rancher.container.start_once: true
+  entrypoint: /bin/true
 
 #test:
 #  image: banno/graphite-test
