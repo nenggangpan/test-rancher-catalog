@@ -1,0 +1,12 @@
+.catalog:
+  name: "Graphite Sample"
+  version: v0.1.1
+  description: "sentience monitoring component"
+  minimum_rancher_version: v0.1.0
+  questions:
+    - variable: exposed_web_port
+      description: "Port to access graphite web"
+      label: "exposed_web_port"
+      required: true
+      default: "8080"
+      type: "int"
