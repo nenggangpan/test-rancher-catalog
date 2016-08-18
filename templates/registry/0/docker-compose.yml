@@ -1,0 +1,16 @@
+registry:
+  image: registry:2
+  ports:
+    - $REGISTRY-PORT:5000
+#  labels:
+#    io.rancher.scheduler.affinity: $HOST-LABEL
+  environment:
+    REGISTRY_HTTP_TLS_CERTIFICATE: /certs/docker-registry.crt
+    REGISTRY_HTTP_TLS_KEY: /certs/docker-registry.key
+    REGISTRY_AUTH: htpasswd
+    REGISTRY_AUTH_HTPASSWD_PATH: /auth/htpasswd
+    REGISTRY_AUTH_HTPASSWD_REALM: Registry Realm
+  volumes:
+    - $REGISTRY-DATA-DIR:/var/lib/registry
+    - $REGISTRY-CERT-DIR:/certs
+    - $REGISTRY-AUTH-DIR:/auth 
