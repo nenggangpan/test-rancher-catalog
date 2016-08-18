@@ -1,0 +1,43 @@
+opendj:
+  image: forgerock/opendj:latest
+  ports:
+  - "$exposed_opendj_port1:389"
+  - "$exposed_opendj_port2:4444"
+  hostname: opendj
+  environment:
+    BASE_DN: dc=openam,dc=forgerock,dc=org
+    # Default password for config store
+    DIR_MANAGER_PWD: $DIR_MANAGER_PWD
+  volumes:
+  # uncomment to create a persistent directory
+  #    - /tmp/opendj:/opt/opendj/data
+  # This mounts a secret volume for the dir manager password and for DJ key/trust stores
+  - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
+
+openam:
+  image: forgerock/openam:$IMAGE_TAG
+  ports:
+  - "$exposed_openam_gui_port:8080"
+  hostname: openam
+  environment:
+    DIR_MANAGER_PW_FILE: /var/secrets/opendj/dirmanager.pw
+    FQDN_HOSTNAME: $HOSTNAME_SHORT$CK_DOMAIN
+    SERVER_URL: http://$HOSTNAME_SHORT$CK_DOMAIN:8080
+    CK_DOMAIN: $CK_DOMAIN
+    ADMIN_PWD: $ADMIN_PWD
+    # Default password for config store
+    DIR_MANAGER_PWD: $DIR_MANAGER_PWD
+  volumes:
+  - /home/sentience/rancher-openam/sample/am-secrets:/var/secrets/openam
+  - /home/sentience/rancher-openam/sample/dj-secrets:/var/secrets/opendj
+  - /home/sentience/rancher-openam/sample/config-ext:/var/tmp/config
+
+openig:
+  image: forgerock/openig
+  ports: 
+  - "18081:8080"
+  hostname: openig
+  environment: 
+    OPENAM_SERVER_URL: http://$HOSTNAME_SHORT$CK_DOMAIN:8080
+  volumes: 
+  - openigconfig/config:/var/openig/config
