@@ -40,4 +40,4 @@ openig:
   environment: 
     OPENAM_SERVER_URL: http://$HOSTNAME_SHORT$CK_DOMAIN:8080
   volumes: 
-  - openigconfig/config:/var/openig/config
+  - openigconfig:/var/openig/config
