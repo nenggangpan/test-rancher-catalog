@@ -4,25 +4,25 @@
   description: "Docker registry v2, if use default configuration, it only can deploy successfully on machine with ip 10.79.22.52. default account/password: sentience/sentience"
   minimum_rancher_version: v0.1.0
   questions:
-    - variable: $REGITRY-PORT
+    - variable: REGITRY-PORT
       description: "Port to access registry"
       label: "registry access port"
       required: true
       default: "5000"
       type: "int"
-    - variable: $REGISTRY-DATA-DIR
+    - variable: REGISTRY-DATA-DIR
       description: "directory to save registry data such as docker images"
       label: "registry data directory"
       required: true
       default: "lab-registry-data"
       type: "string"
-    - variable: $REGISTRY-CERT-DIR
+    - variable: REGISTRY-CERT-DIR
       description: "directory to save registry certificates"
       label: "registry certs derectory"
       required: true
       default: "lab-registry-certs"
       type: "string"
-    - variable: $REGISTRY-AUTH-DIR
+    - variable: REGISTRY-AUTH-DIR
       description: "directory to save registry auth file htpasswd"
       label: "registry auth directory"
       required: true
