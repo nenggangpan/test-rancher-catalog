@@ -2,7 +2,7 @@
   name: Gitlab Community
   version: 8.5.1-0
   description: |
-    Gitlab CE is a free GitHub alternative
+    Gitlab CE is a free GitHub alternative, please try with root/5iveL!fe while you first login
   minimum_rancher_version: v0.56.0
   maintainer: "Alexis Ducastel <alexis@ducastel.net>"
   uuid: gitlab-0
@@ -12,6 +12,36 @@
       label: "Hostname:"
       required: true
       default: "git.example.com"
+      type: "string"
+    - variable: "gitlab_exposed_http_port"
+      description: "Gitlab port"
+      label: "http port:"
+      required: true
+      default: "80"
+      type: "string"
+    - variable: "gitlab_exposted_ssh_port"
+      description: "Gitlab port"
+      label: "ssh port"
+      required: true
+      default: "22"
+      type: "string"
+    - variable: "GITLAB-DATA-DIR"
+      description: "Gitlab data directory"
+      label: "gitlab data directory"
+      required: true
+      default: "lab-gitlab-data"
+      type: "string"
+    - variable: "GITLAB-CONFIG-DIR"
+      description: "Gitlab configuration directory"
+      label: "gitlab configuration directory"
+      required: true
+      default: "lab-gitlab-config"
+      type: "string"
+    - variable: "GITLAB-LOG-DIR"
+      description: "Gitlab log directory"
+      label: "gitlab log directory"
+      required: true
+      default: "/tmp"
       type: "string"
 
 gitlab-server:
