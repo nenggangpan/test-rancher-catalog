@@ -1,7 +1,7 @@
 gitlab-server:
   ports:
-  - $gitlab_exposed_ssh_port:22
-  - $gitlab_exposed_http_port:80
+  - ${gitlab_exposed_ssh_port}:22
+  - ${gitlab_exposed_http_port}:80
   labels:
     io.rancher.sidekicks: gitlab-data
   hostname: ${gitlab_hostname}
@@ -17,6 +17,6 @@ gitlab-data:
   hostname: gitdata
   image: gitlab/gitlab-ce:8.5.1-ce.0
   volumes:
-  - $GITLAB-CONFIG-DIR:/etc/gitlab
-  - $GITLAB-LOG-DIR:/var/log/gitlab
-  - $GITLAB-DATA-DIR:/var/opt/gitlab
+  - ${GITLAB-CONFIG-DIR}:/etc/gitlab
+  - ${GITLAB-LOG-DIR}:/var/log/gitlab
+  - ${GITLAB-DATA-DIR}:/var/opt/gitlab
