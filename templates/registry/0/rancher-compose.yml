@@ -4,7 +4,7 @@
   description: "Docker registry v2, if use default configuration, it only can deploy successfully on machine with ip 10.79.22.52. default account/password: sentience/sentience"
   minimum_rancher_version: v0.1.0
   questions:
-    - variable: REGITRY-PORT
+    - variable: REGISTRY-PORT
       description: "Port to access registry"
       label: "registry access port"
       required: true
